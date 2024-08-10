@@ -1,9 +1,15 @@
 import React from 'react'
+import Navbar from '../layout/Navbar';
+import TestConnection from '../components/TestConnection';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <Navbar />
+      <TestConnection/>
          
+    </div>
     
   )
-}
+};
+export default Home;

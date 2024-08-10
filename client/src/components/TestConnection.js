@@ -1,64 +1,66 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import "./form.css";
 
 const TestConnection = () => {
-    const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
-    const testConnection = async ()=>{
-        try {
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    // formState: { errors }
+  } = useForm();
 
-            const API_URL = 'http://localhost:8080/api/data';
-            const res =  await axios.get(API_URL);
-     
-            console.log(res);
-           setMessage(res.data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+  const onSubmit = (data) => {
+    console.log(data);
+    postTweet(data.tweet);
+    setMessage(data.tweet);
+  };
 
-    const authentication = async () => {
-        try{
-        const API_URL = 'http://localhost:8080/api/test';
+  const testConnection = async () => {
+    try {
+      const API_URL = "http://localhost:8080/api/data";
+      const res = await axios.get(API_URL);
 
-        const res = await axios.get(API_URL);
-        console.log(res.data);
-       
-
-        
-        // const res1 = await axios.get("http://localhost:8080/api/callback");
-        // console.log(res1)
-
-        } catch(error){
-            console.error('Error', error);
-        }
-
+      console.log(res);
+      setMessage(res.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
+  };
 
-    const postTweet = async () => {
-        
+ 
 
-        try{
-            const API_URL = 'http://localhost:8080/api/tweet';
-    
-            const res = await axios.post(API_URL,"This is from front end", {headers: {'Content-Type': 'text/plain'}}); 
-            console.log(res.data);
-           
-    
-            
-            } catch(error){
-                console.error('Error', error);
-            }
+  const postTweet = async (x) => {
+    try {
+      const API_URL = "http://localhost:8080/api/tweet";
+
+      const res = await axios.post(API_URL, x, {
+        headers: { "Content-Type": "text/plain" },
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error", error);
     }
+  };
 
-    return (
-        <div>
-            <button onClick={testConnection}>Test Connection</button> 
-            <button onClick={authentication}>Aunthenticate Twitter</button>
-            <button onClick={postTweet}>Post Tweets</button>
-            <p>{message}</p>
-        </div>
-    );
+  return (
+    <div>
+        <p style={{paddingTop:"50px"}}></p>
+      <p>{message.tweet}</p>
+      <button onClick={testConnection}>Test Connection</button>
+
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* register your input into the hook by invoking the "register" function */}
+          <input defaultValue="" {...register("tweet")} />
+          <input type="submit" value={"tweet"} />
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default TestConnection;

@@ -10,6 +10,14 @@ export const postData = (data) => {
     return axios.post(`${API_URL}/data`, data);
 };
 
-app.get('/api/test', (req, res) => {
-    res.json({ message: 'Backend is connected!' });
-});
+
+export const authTwitterPck = async () => {
+    try {
+
+      const res = await axios.get(`${API_URL}/test`);
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+  
