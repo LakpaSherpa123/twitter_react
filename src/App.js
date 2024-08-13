@@ -1,22 +1,20 @@
-
-import './App.css';
+import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Home from './pages/Home';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AuthConfig from './pages/AuthConfig';
-
+import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AuthConfig from "./pages/AuthConfig";
+import AlpacaConfig from "./pages/AlpacaConfig";
 
 function App() {
   return (
-    
     <div className="App">
-         <BrowserRouter basename='/'> 
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/AuthConfig" element={<AuthConfig />} />
-         </Routes>
-     </BrowserRouter> 
-      
+          <Route path="/AlpacaConfig" element={<AlpacaConfig />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./form.css";
 
 const TestConnection = () => {
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const {
     register,
@@ -31,8 +33,6 @@ const TestConnection = () => {
     }
   };
 
- 
-
   const postTweet = async (x) => {
     try {
       const API_URL = "http://localhost:8080/api/tweet";
@@ -48,10 +48,13 @@ const TestConnection = () => {
 
   return (
     <div>
-        <p style={{paddingTop:"50px"}}></p>
+      <p style={{ paddingTop: "50px" }}></p>
       <p>{message.tweet}</p>
       <button onClick={testConnection}>Test Connection</button>
 
+      <button onClick={() => navigate("./AlpacaConfig")}>
+        Alpaca Connection
+      </button>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* register your input into the hook by invoking the "register" function */}
