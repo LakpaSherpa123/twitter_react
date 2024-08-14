@@ -3,6 +3,8 @@ import Navbar from "../layout/Navbar";
 import { useForm } from "react-hook-form";
 import "../components/form.css";
 import { authAlpaca } from "../services/api";
+import axios from "axios";
+
 
 function AlpacaConfig() {
   const [message, setMessage] = useState("Fill the Authentication Form!");
@@ -22,12 +24,30 @@ function AlpacaConfig() {
   const authForm = useForm();
   const orderForm = useForm();
 
+  const placeOrder = async (x) => {
+    try {//symbol, qty,side,market, timeInForce
+      const API_URL = "http://localhost:8080/api/placeAlpacaOrder";
+
+      // const res = await axios.post(API_URL, symbol,qty, side, market,timeInForce, {
+      //   headers: { "Content-Type": "text/plain" },
+      
+      // });
+      const res = await axios.post(API_URL, x
+  
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+
   //Submit button for Auth FOrm
   const onSubmitAuth = (data) => {
     console.log(data);
     setMessage("You are Authenticated!");
     setOrderToggle(true);
     ToggleAuthForm();
+    authAlpaca();
 
     //RUN THE Auth Function from server api
   };
@@ -35,8 +55,11 @@ function AlpacaConfig() {
   //Submit button for Order Form
   const onSubmitOrder = (data) => {
     console.log(data);
+    placeOrder(data); 
+    //data.symbol, data.qty, data.side, data.market, data.timeInForce
     setMessage("Your Order was Filled!");
     setPlacedOrder(data);
+    
     //RUN THE Order Fill Function from server api
   };
 
