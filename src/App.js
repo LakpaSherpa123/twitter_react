@@ -11,6 +11,7 @@ function App() {
       <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/AuthConfig" element={<AuthConfig />} />
           <Route path="/AlpacaConfig" element={<AlpacaConfig />} />
         </Routes>
