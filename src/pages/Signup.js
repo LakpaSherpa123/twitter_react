@@ -4,7 +4,7 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Login() {
+function Signup() {
   const {
     register,
     handleSubmit,
@@ -91,4 +91,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
