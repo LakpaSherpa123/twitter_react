@@ -42,11 +42,8 @@ function ShowHistory() {
     <div style={{ marginBottom: "4rem" }}>
       <h2 style={{ color: "#fff", marginTop: "2rem" }}>Order History</h2>
       {history.map((stock, index) => (
-        <OrderHistoryCard key={index} stock={stock} />
+        <OrderHistoryCard key={index} stock={stock} tweet={tweet} />
       ))}
-
-      {/* THIS ONE IS TEST WITH TWEET INSIDE */}
-      <OrderHistoryCard stock={history[0]} tweet={tweet} />
     </div>
   );
 }
