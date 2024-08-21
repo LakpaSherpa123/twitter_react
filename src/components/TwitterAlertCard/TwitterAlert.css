@@ -1,0 +1,102 @@
+/* Tweets */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+
+p {
+  margin: 0;
+}
+.twitterAlert {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  line-height: 156%;
+  font-family: Nokora, sans-serif;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+.tweetCont {
+  display: flex;
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+.tweets {
+  width: 380px;
+  height: 100%;
+  padding: 11px 25px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 1);
+}
+.group-851 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+.image {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  margin-left: 1rem;
+  text-align: left;
+}
+.names {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: fit-content;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+.name {
+  color: rgba(15, 20, 25, 1);
+  font-size: 14px;
+  line-height: 136%;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+}
+
+.vector {
+  width: 14.95px;
+  height: 100%;
+}
+
+.username {
+  color: rgba(83, 100, 113, 1);
+  font-size: 14px;
+  line-height: 136%;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.date {
+  color: rgba(83, 100, 113, 1);
+  font-size: 12px;
+  line-height: 158%;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.mainTweet {
+  color: rgba(0, 0, 0, 1);
+  font-size: 14px;
+  line-height: 121%;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  /* background-color: red; */
+}
+
+.icons {
+  margin-top: 1.3rem;
+  width: 100%;
+  height: 16px;
+}

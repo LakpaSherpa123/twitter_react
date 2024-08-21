@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Nokora:wght@700&display=swap");
+/* Items */
+
+p {
+  margin: 0;
+}
+
+/* Title */
+
+.section-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  margin-top: 3rem;
+}
+.open-positions {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  line-height: 156%;
+  font-family: Nokora, sans-serif;
+  font-weight: 700;
+}
+
+.view-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: rgba(246, 28, 122, 1);
+  font-size: 14px;
+  line-height: 171%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* body */
+.positionCont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 236px;
+  box-sizing: border-box;
+  /* background-color: orange; */
+}
+
+.trade {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  height: 100%;
+  padding: 24px;
+  border-radius: 24px;
+  box-sizing: border-box;
+  background-color: #f9fafb;
+}
+.logo {
+  width: 48px;
+  height: 48px;
+}
+
+.name-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.ticker {
+  color: rgba(3, 49, 75, 1);
+  font-size: 18px;
+  line-height: 156%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+}
+
+.names {
+  width: 100%;
+  height: 16px;
+  box-sizing: border-box;
+  mix-blend-mode: normal;
+  opacity: 0.6;
+}
+.stock-name {
+  color: rgba(3, 49, 75, 1);
+  font-size: 12px;
+  line-height: 133%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+}
+
+.price {
+  color: rgba(3, 49, 75, 1);
+  font-size: 18px;
+  line-height: 156%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+  text-align: left;
+}
+
+.gains-loss {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  box-sizing: border-box;
+}
+.change-money {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  height: 100%;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  background-color: rgba(246, 28, 122, 1);
+}
+.money {
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  line-height: 133%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+}
+
+.perc {
+  color: rgba(129, 152, 165, 1);
+  font-size: 12px;
+  line-height: 133%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+}

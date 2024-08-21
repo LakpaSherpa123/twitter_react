@@ -1,0 +1,102 @@
+/* Item */
+
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee:wght@400&display=swap");
+
+.CCContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.orderContainer {
+  width: 70%;
+  height: 100%;
+  padding: 5px 20px;
+  background-color: #fff;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.historyTweet p {
+  color: black;
+  font-size: 12px;
+  width: 100%;
+  text-align: left;
+}
+.orderHead {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.5rem;
+  color: rgba(3, 49, 75, 1);
+  font-family: ABeeZee, sans-serif;
+}
+.orderName {
+  font-size: 18px;
+  font-weight: 700;
+}
+.orderName span {
+  font-weight: 400;
+  font-size: 12px;
+  color: rgb(149, 151, 151);
+}
+
+.orderDate {
+  font-size: 10px;
+  color: rgb(149, 151, 151);
+  line-height: 250%;
+}
+
+.orderImgPrice {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+}
+.company-logo {
+  width: 39px;
+  height: 100%;
+  margin-right: 2rem;
+}
+
+.orderPrice {
+  color: rgba(3, 49, 75, 1);
+  font-size: 29px;
+  line-height: 142%;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+}
+
+.moneypercentage {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Eudoxus Sans, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+}
+.change-money {
+  height: 100%;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  background-color: rgba(246, 28, 122, 1);
+}
+.dollarChange {
+  color: rgba(255, 255, 255, 1);
+}
+
+.percChange {
+  color: rgba(129, 152, 165, 1);
+}
