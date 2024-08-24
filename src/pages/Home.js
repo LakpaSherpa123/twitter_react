@@ -4,6 +4,8 @@ import Navbar from "../layout/Navbar";
 import TwitterAlert from "../components/TwitterAlertCard/TwitterAlert";
 import OpenPosition from "../components/OpenPositionCard/OpenPosition";
 import ShowHistory from "../components/OrderHistoryCard/ShowHistory";
+import SimpleMenu from "../components/ResponsiveAppBar";
+import ResponsiveAppBar from "../components/ResponsiveAppBar";
 
 const Home = () => {
   const [tweet, setTweet] = useState("");
@@ -38,8 +40,9 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <TestConnection /> */}
+      <ResponsiveAppBar />
       <TwitterAlert tweet={tweet} />
       <OpenPosition stocks={stocks} />
       <ShowHistory />
