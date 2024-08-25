@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./OpenPosition.css";
-import axios from "axios";
 
 function OpenPosition() {
   const [openPositions, setOpenPositions] = useState([]);
@@ -46,12 +45,28 @@ function OpenPosition() {
                   <p className="stock-name">{item.exchange}</p>
                 </div>
               </div>
-              <p className="price">{item.current_price}</p>
+              <p className="price">${item.current_price}</p>
               <div className="gains-loss">
-                <div className="change-money clip-contents">
-                  <p className="money">{item.unrealized_intraday_pl}</p>
+                <div
+                  className={`change-money${
+                    item.unrealized_pl >= 0 ? "pos" : "neg"
+                  }`}
+                >
+                  <p>
+                    {item.unrealized_pl >= 0 ? "+" : "-"}
+                    {(item.current_price - item.avg_entry_price).toFixed(2)}
+                  </p>
                 </div>
-                <p className="perc">{item.qty}</p>
+                <p
+                  className={`perc ${
+                    item.unrealized_pl / item.cost_basis > 0
+                      ? "positive"
+                      : "negative"
+                  }`}
+                >
+                  {item.unrealized_pl / item.cost_basis >= 0 ? "+" : "-"}
+                  {((item.unrealized_pl / item.cost_basis) * 100).toFixed(2)}%
+                </p>
               </div>
             </div>
           ))}
