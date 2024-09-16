@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../layout/Navbar";
 import { useForm } from "react-hook-form";
 import "../components/form.css";
 import { authTwitterPck } from "../services/api";
 
 function AuthConfig() {
+  const [message, setMessage] = useState("Fill the Authentication Form!");
+
   const {
     register,
     handleSubmit,
@@ -14,23 +16,24 @@ function AuthConfig() {
 
   const onSubmit = (data) => {
     console.log(data);
+    setMessage("You are Authenticated!");
     authTwitterPck();
   };
 
   return (
-    <div>
+    <div className="AuthForm">
       <h2 style={{ color: "#fff", marginTop: "4rem" }}>
         Twitter Authentication
       </h2>
 
-      <p style={{ paddingTop: "50px" }}></p>
+      <p style={{ color: "white", fontSize: "1rem" }}>{message}</p>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         <label for="username" class="text-indicator no_marg">
           Consumer Key
         </label>
-        <input defaultValue="consumer_key" {...register("consumer_key")} />
+        <input defaultValue="" {...register("consumer_key")} />
 
         <label for="username" class="text-indicator no_marg">
           Consumer Secret
@@ -52,12 +55,7 @@ function AuthConfig() {
         </label>
         <input defaultValue="" {...register("redirect_Url")} />
 
-        <label for="username" class="text-indicator no_marg">
-          Tweet
-        </label>
-        <input defaultValue="" {...register("tweet")} />
-
-        <input type="submit" value={"Authenticate"} />
+        <input type="submit" value={"SAVE"} />
       </form>
     </div>
   );

@@ -1,7 +1,11 @@
 import React from "react";
 import OrderHistoryCard from "./OrderHistoryCard";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function ShowHistory() {
+  const location = useLocation();
+
   const tweet = {
     name: "Tsering Pemba",
     text: "#ALERT BTO $SPY 8/22 559P 2.02 #SWING VERY HIGH RISK, only light size! Space to add once if we pop again Follow at your OWN RISK!",
@@ -40,7 +44,21 @@ function ShowHistory() {
   ];
   return (
     <div style={{ marginBottom: "4rem" }}>
-      <h2 style={{ color: "#fff", marginTop: "2rem" }}>Order History</h2>
+      {/* <h2 style={{ color: "#fff", marginTop: "2rem" }}>Order History</h2> */}
+      <div
+        className="section-title"
+        // style={{ display: "flex", width: "50%", justifyContent: "flex-end" }}
+      >
+        <p className="open-positions">Order History</p>
+        <Link
+          to="/order-history"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          {location.pathname !== "/order-history" && (
+            <p className="view-all">View all</p>
+          )}
+        </Link>{" "}
+      </div>
       {history.map((stock, index) => (
         <OrderHistoryCard key={index} stock={stock} tweet={tweet} />
       ))}

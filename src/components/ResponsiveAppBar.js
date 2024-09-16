@@ -19,7 +19,6 @@ const pages = [
   { name: "Current Trade", path: "/current-trade" },
 ];
 const settings = [
-  { name: "Profile", path: "/profile" },
   { name: "Account", path: "/account" },
   { name: "Authentication", path: "/Auth" },
   { name: "Logout", path: "/login" },
@@ -46,11 +45,12 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="100vw">
         <Toolbar disableGutters>
           {/* DESKTOP MENU */}
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            {/* Title Logo */}
             <Typography
               variant="h6"
               noWrap
@@ -67,10 +67,7 @@ function ResponsiveAppBar() {
               X bull
             </Typography>
           </Link>
-          {/* HAMBURGER */}
-          {/* HAMBURGER */}
-          {/* HAMBURGER */}
-          {/* HAMBURGER */}
+          {/* Mobile View */}
           {/* HAMBURGER */}
           {/* HAMBURGER */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

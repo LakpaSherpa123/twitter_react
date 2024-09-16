@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
 
 function Signup() {
+  const [usernameError, setusernameError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -19,6 +21,7 @@ function Signup() {
       const res = await axios.post(API_URL, data);
       console.log(res.data);
     } catch (error) {
+      setusernameError(true);
       console.error("Error", error);
     }
   };
@@ -28,6 +31,9 @@ function Signup() {
       <p style={{ paddingTop: "50px" }}></p>
       <h2>Signup</h2>
 
+      {usernameError ? (
+        <p className="error-message">Username not available</p>
+      ) : null}
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* name */}
         <label for="name" class="text-indicator no_marg">

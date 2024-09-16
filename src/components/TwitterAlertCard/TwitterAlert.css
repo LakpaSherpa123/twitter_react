@@ -12,7 +12,7 @@ p {
   line-height: 156%;
   font-family: Nokora, sans-serif;
   font-weight: 700;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 .tweetCont {
   display: flex;
@@ -21,9 +21,9 @@ p {
   justify-content: center;
 }
 .tweets {
-  width: 380px;
+  width: 480px;
   height: 100%;
-  padding: 11px 25px;
+  padding: 11px 18px;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 1);
 }
@@ -99,4 +99,15 @@ p {
   margin-top: 1.3rem;
   width: 100%;
   height: 16px;
+}
+
+@media only screen and (max-width: 549px) {
+  .tweets {
+    width: 480px;
+    padding: 11px 0px;
+  }
+
+  .tweets img {
+    display: none;
+  }
 }

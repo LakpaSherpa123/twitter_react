@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./OpenPosition.css";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function OpenPosition() {
   const [openPositions, setOpenPositions] = useState([]);
   const alpacaID = process.env.REACT_APP_ALPACA_API_ID;
   const alpacaSecret = process.env.REACT_APP_ALPACA_SECRET_KEY;
+
+  const location = useLocation();
 
   const options = {
     method: "GET",
@@ -25,10 +29,20 @@ function OpenPosition() {
   }, []);
 
   return (
+    // <Link to={page.path}
+    //style={{ textDecoration: "none", color: "inherit" }}
+    //></Link>
     <>
       <div className="section-title">
         <p className="open-positions">Open Positions</p>
-        <p className="view-all">View all</p>
+        <Link
+          to="/current-trade"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          {location.pathname !== "/current-trade" && (
+            <p className="view-all">View all</p>
+          )}
+        </Link>
       </div>
       <div className="positionCont">
         <div className="items">

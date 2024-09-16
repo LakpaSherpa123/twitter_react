@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../layout/Navbar";
 // import TestConnection from "../components/TestConnection";
-import TwitterAlert from "../components/TwitterAlertCard/TwitterAlert";
+// import TwitterAlert from "../components/TwitterAlertCard/TwitterAlert";
 import OpenPosition from "../components/OpenPositionCard/OpenPosition";
 import ShowHistory from "../components/OrderHistoryCard/ShowHistory";
 import SimpleMenu from "../components/ResponsiveAppBar";
@@ -43,7 +43,8 @@ const Home = () => {
       {/* <Navbar /> */}
       {/* <TestConnection /> */}
       <ResponsiveAppBar />
-      <TwitterAlert tweet={tweet} />
+      {/* <TwitterAlert tweet={tweet} /> */}
+      {/* We still need the twitter Alert Component? */}
       <OpenPosition stocks={stocks} />
       <ShowHistory />
     </div>

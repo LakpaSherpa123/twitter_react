@@ -22,6 +22,7 @@ h1 {
   background: #0e101c;
   max-width: 400px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* p {
@@ -122,12 +123,7 @@ button {
   margin: 0;
 }
 
-.formHead {
-  cursor: pointer;
-  color: #ec5990;
-}
-
-.formHead.expanded {
+.AlpacaForm {
   background-color: #ec5990;
   color: white;
   padding: 5px 10px;
@@ -140,9 +136,9 @@ button {
   font-size: 20px;
 }
 
-.formHead.collapsed {
-  font-size: 30px;
-  border-bottom: none;
-  font-weight: normal;
-  width: 100%;
+@media only screen and (max-width: 549px) {
+  .AuthForm {
+    width: 85%;
+    margin: auto;
+  }
 }
