@@ -7,7 +7,7 @@ import AlpacaConfig from "./pages/AlpacaConfig";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import OrderSummary from "./pages/OrderSummary";
-import CurrentTrades from "./pages/CurrentTrades";
+import OpenPositions from "./pages/OpenPositions";
 import Auth from "./pages/Auth";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/current-trade" element={<CurrentTrades />} />
+          <Route path="/open-positions" element={<OpenPositions />} />
           <Route path="/order-history" element={<OrderSummary />} />
           <Route path="/Auth" element={<Auth />} />
           <Route path="/login" element={<Login />} />

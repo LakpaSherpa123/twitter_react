@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../layout/Navbar";
 // import TestConnection from "../components/TestConnection";
 // import TwitterAlert from "../components/TwitterAlertCard/TwitterAlert";
-import OpenPosition from "../components/OpenPositionCard/OpenPosition";
 import ShowHistory from "../components/OrderHistoryCard/ShowHistory";
 import SimpleMenu from "../components/ResponsiveAppBar";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
+import ShowPositions from "../components/OpenPositionCard/ShowPositions";
 
 const Home = () => {
   const [tweet, setTweet] = useState("");
@@ -45,7 +45,7 @@ const Home = () => {
       <ResponsiveAppBar />
       {/* <TwitterAlert tweet={tweet} /> */}
       {/* We still need the twitter Alert Component? */}
-      <OpenPosition stocks={stocks} />
+      <ShowPositions stocks={stocks} />
       <ShowHistory />
     </div>
   );

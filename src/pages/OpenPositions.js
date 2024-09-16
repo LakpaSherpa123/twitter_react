@@ -1,5 +1,5 @@
 import React from "react";
-import OpenPosition from "../components/OpenPositionCard/OpenPosition";
+import OpenPosition from "../components/OpenPositionCard/ShowPositions";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 
 function CurrentTrades() {

@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const pages = [
   { name: "Order History", path: "/order-history" },
-  { name: "Current Trade", path: "/current-trade" },
+  { name: "Open Positions", path: "/open-positions" },
 ];
 const settings = [
   { name: "Account", path: "/account" },

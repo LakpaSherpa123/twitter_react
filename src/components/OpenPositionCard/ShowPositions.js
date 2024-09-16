@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./OpenPosition.css";
+import "./ShowPosition.css";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-function OpenPosition() {
+function ShowPositions() {
   const [openPositions, setOpenPositions] = useState([]);
   const alpacaID = process.env.REACT_APP_ALPACA_API_ID;
   const alpacaSecret = process.env.REACT_APP_ALPACA_SECRET_KEY;
@@ -36,10 +36,10 @@ function OpenPosition() {
       <div className="section-title">
         <p className="open-positions">Open Positions</p>
         <Link
-          to="/current-trade"
+          to="/open-positions"
           style={{ textDecoration: "none", color: "inherit" }}
         >
-          {location.pathname !== "/current-trade" && (
+          {location.pathname !== "/open-positions" && (
             <p className="view-all">View all</p>
           )}
         </Link>
@@ -90,7 +90,7 @@ function OpenPosition() {
   );
 }
 
-export default OpenPosition;
+export default ShowPositions;
 
 {
   /* <div className="trade">
