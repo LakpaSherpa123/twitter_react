@@ -11,6 +11,7 @@ import OpenPositions from "./pages/OpenPositions";
 import Auth from "./pages/Auth";
 
 function App() {
+  //mistakenlty pushed code with my brother git
   return (
     <div className="App">
       <BrowserRouter basename="/">
