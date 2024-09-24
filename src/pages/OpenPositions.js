@@ -1,12 +1,12 @@
 import React from "react";
-import OpenPosition from "../components/OpenPositionCard/ShowPositions";
+import OpenPositionCard from "../components/OpenPositionCard/ShowPositions";
 import ResponsiveAppBar from "../components/ResponsiveAppBar";
 
 function CurrentTrades() {
   return (
     <div>
       <ResponsiveAppBar />
-      <OpenPosition />
+      <OpenPositionCard />
     </div>
   );
 }

@@ -7,8 +7,22 @@ function ShowPositions() {
   const [openPositions, setOpenPositions] = useState([]);
   const alpacaID = process.env.REACT_APP_ALPACA_API_ID;
   const alpacaSecret = process.env.REACT_APP_ALPACA_SECRET_KEY;
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const location = useLocation();
+
+  const handleClick = () => {
+    setShowConfirm(true);
+  };
+
+  const handleConfirm = (response) => {
+    setShowConfirm(false);
+    if (response) {
+      alert("You clicked yes!");
+    } else {
+      alert("You clicked no!");
+    }
+  };
 
   const options = {
     method: "GET",
@@ -29,10 +43,17 @@ function ShowPositions() {
   }, []);
 
   return (
-    // <Link to={page.path}
-    //style={{ textDecoration: "none", color: "inherit" }}
-    //></Link>
     <>
+      {showConfirm && (
+        <div className="confirm_box">
+          <p>Are you sure?</p>
+          <p>At $1000 loss? It will come back up</p>
+          <div className="confirm_buttons">
+            <button onClick={() => handleConfirm(true)}>Yes</button>
+            <button onClick={() => handleConfirm(false)}>No</button>
+          </div>
+        </div>
+      )}
       <div className="section-title">
         <p className="open-positions">Open Positions</p>
         <Link
@@ -44,10 +65,27 @@ function ShowPositions() {
           )}
         </Link>
       </div>
-      <div className="positionCont">
-        <div className="items">
+
+      <div
+        className={` ${
+          location.pathname === "open-positions"
+            ? `positionCont`
+            : `pagePositionCont`
+        }`}
+        // className="positionCont"
+      >
+        <div
+          className={` ${
+            location.pathname === "open-positions" ? `items` : `pageItems`
+          }`}
+        >
           {openPositions.map((item) => (
-            <div className="trade" key={item.symbol}>
+            <div
+              className={` ${
+                location.pathname === "open-positions" ? `trade` : `pageTrade`
+              }`}
+              key={item.symbol}
+            >
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/ra018iuzj1f-I213%3A3643%3B0%3A5166?alt=media&token=c1fb6eee-8e68-4825-ae87-728b5dc865aa"
                 alt="Not Found"
@@ -81,6 +119,9 @@ function ShowPositions() {
                   {item.unrealized_pl / item.cost_basis >= 0 ? "+" : "-"}
                   {((item.unrealized_pl / item.cost_basis) * 100).toFixed(2)}%
                 </p>
+                <div className="positionSell" onClick={handleClick}>
+                  X
+                </div>
               </div>
             </div>
           ))}
@@ -91,26 +132,3 @@ function ShowPositions() {
 }
 
 export default ShowPositions;
-
-{
-  /* <div className="trade">
-  <img
-    src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/ra018iuzj1f-I213%3A3644%3B0%3A5178?alt=media&token=b9f6479d-3297-4cc6-a0f3-bcb486915386"
-    alt="Not Found"
-    className="logo"
-  />
-  <div className="name-cont">
-    <p className="ticker">{stocks[0].ticker}</p>
-    <div className="names">
-      <p className="stock-name">{stocks[0].stockName}</p>
-    </div>
-  </div>
-  <p className="price">{stocks[0].price}</p>
-  <div className="gains-loss">
-    <div className="change-money clip-contents">
-      <p className="money">{stocks[0].money}</p>
-    </div>
-    <p className="perc">{stocks[0].perc}</p>
-  </div>
-</div>; */
-}
