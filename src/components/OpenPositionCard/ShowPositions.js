@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./ShowPosition.css";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -8,21 +8,36 @@ function ShowPositions() {
   const alpacaID = process.env.REACT_APP_ALPACA_API_ID;
   const alpacaSecret = process.env.REACT_APP_ALPACA_SECRET_KEY;
   const [showConfirm, setShowConfirm] = useState(false);
+  const [currentStock, setCurrentStock] = useState("");
+  const [currentStockPrice, setCurrentStockPrice] = useState("");
 
   const location = useLocation();
 
-  const handleClick = () => {
-    setShowConfirm(true);
-  };
+  //Sell Button onClick -> make confirm comp visible & save stock info to state
+  const handleClick = useCallback(
+    (item) => {
+      setShowConfirm(true);
+      // You can access the item data here
+      // console.log(item);
+      setCurrentStock(item.symbol);
+      setCurrentStockPrice(item.current_price);
+    },
+    [setShowConfirm]
+  );
 
-  const handleConfirm = (response) => {
-    setShowConfirm(false);
-    if (response) {
-      alert("You clicked yes!");
-    } else {
-      alert("You clicked no!");
-    }
-  };
+  //confirm com presponse -> THE main initiator for selling
+  const handleConfirm = useCallback(
+    (response) => {
+      setShowConfirm(false);
+      if (response) {
+        alert("You clicked yes!");
+        // Process The Sell Order with Rest of  AlpacaAPI
+      } else {
+        alert("You clicked no!");
+      }
+    },
+    [setShowConfirm]
+  );
 
   const options = {
     method: "GET",
@@ -46,6 +61,8 @@ function ShowPositions() {
     <>
       {showConfirm && (
         <div className="confirm_box">
+          <p>{currentStock}</p>
+          <p>{currentStockPrice}</p>
           <p>Are you sure?</p>
           <p>At $1000 loss? It will come back up</p>
           <div className="confirm_buttons">
@@ -68,21 +85,21 @@ function ShowPositions() {
 
       <div
         className={` ${
-          location.pathname === "open-positions"
-            ? `positionCont`
-            : `pagePositionCont`
+          location.pathname === "/open-positions"
+            ? `pagePositionCont`
+            : `positionCont`
         }`}
         // className="positionCont"
       >
         <div
           className={` ${
-            location.pathname === "open-positions" ? `items` : `pageItems`
+            location.pathname === "/open-positions" ? `pageItems` : `items`
           }`}
         >
           {openPositions.map((item) => (
             <div
               className={` ${
-                location.pathname === "open-positions" ? `trade` : `pageTrade`
+                location.pathname === "/open-positions" ? `pageTrade` : `trade`
               }`}
               key={item.symbol}
             >
@@ -100,26 +117,34 @@ function ShowPositions() {
               <p className="price">${item.current_price}</p>
               <div className="gains-loss">
                 <div
-                  className={`change-money${
-                    item.unrealized_pl >= 0 ? "pos" : "neg"
-                  }`}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
                 >
-                  <p>
-                    {item.unrealized_pl >= 0 ? "+" : "-"}
-                    {(item.current_price - item.avg_entry_price).toFixed(2)}
+                  <div
+                    className={`change-money${
+                      item.unrealized_pl >= 0 ? "pos" : "neg"
+                    }`}
+                  >
+                    <p>
+                      {item.unrealized_pl >= 0 ? "+" : "-"}
+                      {(item.current_price - item.avg_entry_price).toFixed(2)}
+                    </p>
+                  </div>
+                  <p
+                    className={`perc ${
+                      item.unrealized_pl / item.cost_basis > 0
+                        ? "positive"
+                        : "negative"
+                    }`}
+                  >
+                    {item.unrealized_pl / item.cost_basis >= 0 ? "+" : "-"}
+                    {((item.unrealized_pl / item.cost_basis) * 100).toFixed(2)}%
                   </p>
                 </div>
-                <p
-                  className={`perc ${
-                    item.unrealized_pl / item.cost_basis > 0
-                      ? "positive"
-                      : "negative"
-                  }`}
-                >
-                  {item.unrealized_pl / item.cost_basis >= 0 ? "+" : "-"}
-                  {((item.unrealized_pl / item.cost_basis) * 100).toFixed(2)}%
-                </p>
-                <div className="positionSell" onClick={handleClick}>
+                <div className="positionSell" onClick={() => handleClick(item)}>
                   X
                 </div>
               </div>
